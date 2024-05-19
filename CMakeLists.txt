@@ -33,8 +33,12 @@ link_directories("/opt/homebrew/lib/")
 link_directories("/usr/local/lib64/")
 link_directories("/mingw64/lib/")
 
-#link_directories("${LIBS_PATH}/linux/PaceLib/")
-link_directories("${LIBS_PATH}/windows/PaceLib/")
+if (MSYS OR MINGW)
+        message("this is sparta")
+        link_directories("${LIBS_PATH}/windows/PaceLib/")
+else()
+        link_directories("${LIBS_PATH}/linux/PaceLib/")
+endif()
 
 add_executable (template
         src/main.cpp)
