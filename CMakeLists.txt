@@ -24,6 +24,8 @@ include_directories("${PACE_INCLUDE_PATH}/graphics/gui")
 include_directories("${PACE_INCLUDE_PATH}/resources")
 include_directories("${PACE_INCLUDE_PATH}/scene")
 
+set(CMAKE_CXX_FLAGS "-std=c++20")
+
 include_directories("/opt/homebrew/include")
 include_directories("/mingw64/include/")
 
@@ -31,10 +33,10 @@ link_directories("/opt/homebrew/lib/")
 link_directories("/usr/local/lib64/")
 link_directories("/mingw64/lib/")
 
-link_directories("${LIBS_PATH}/linux/PaceLib/")
+#link_directories("${LIBS_PATH}/linux/PaceLib/")
 link_directories("${LIBS_PATH}/windows/PaceLib/")
 
 add_executable (template
         src/main.cpp)
 
-target_link_libraries(template m dl SDL2 SDL2_image SDL2_ttf pthread libPaceLib.a)
+target_link_libraries(template m dl libPaceLib.a SDL2 SDL2_image SDL2_ttf pthread)
